@@ -4,9 +4,7 @@
 # todo: this is pretty much identical to bwstitt/library-debian
 #
 
-{{ $version := "16.04" }}
-
-FROM ubuntu:{{ $version }}
+FROM ubuntu:16.04
 
 ADD ./scripts/docker-apt-install.sh /usr/local/sbin/docker-apt-install
 
