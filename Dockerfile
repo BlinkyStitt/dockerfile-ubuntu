@@ -6,7 +6,7 @@
 
 FROM ubuntu:16.04
 
-ADD ./scripts/docker-apt-install.sh /usr/local/sbin/docker-apt-install
+ADD ./src/docker-apt-install.sh /usr/local/sbin/docker-apt-install
 
 RUN chmod 500 \
     /usr/local/sbin/docker-apt-install
