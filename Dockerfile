@@ -9,7 +9,8 @@ FROM ubuntu:17.04
 RUN groupadd -g 911 abc \
  && useradd -m -s /bin/bash -g 911 -u 911 abc
 
-ADD ./src/docker-apt-install.sh /usr/local/sbin/docker-apt-install
-RUN chmod 500 /usr/local/sbin/docker-apt-install
+COPY docker-apt-install.sh /usr/local/sbin/docker-apt-install
 
-RUN docker-apt-install apt-utils
+RUN docker-apt-install \
+	apt-utils \
+	dirmngr

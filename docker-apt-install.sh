@@ -43,9 +43,7 @@ export DEBIAN_FRONTEND=noninteractive
 # stop apt from starting processes on install
 export RUNLEVEL=1
 
-echo "apt-key update:"
-apt-key update 2>&1
-
+# TODO: make this optional
 echo
 echo "apt-get update:"
 apt-get update
@@ -58,6 +56,7 @@ echo
 echo "Installing packages..."
 apt-install "$@"
 
+# TODO: make this optional
 echo
 echo "Cleaning up..."
 rm -rf /var/lib/apt/lists/*
