@@ -1,10 +1,10 @@
 #
-# An Ubuntu Xenial Xerus container with helper scripts for installing packages
+# An Ubuntu container with helper scripts for installing packages
 #
-# todo: this is pretty much identical to bwstitt/library-debian
+# note: this is pretty much identical to bwstitt/library-debian
 #
 
-FROM ubuntu:16.04
+FROM ubuntu:17.04
 
 RUN groupadd -g 911 abc \
  && useradd -m -s /bin/bash -g 911 -u 911 abc
