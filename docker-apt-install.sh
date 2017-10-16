@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # helper to correctly do an 'apt-get install' inside a Dockerfile's RUN
 #
@@ -6,7 +6,6 @@
 #
 # todo: this is copypasta with bwstitt/library-debian/src/
 #
-
 set -e
 
 function apt-install {
