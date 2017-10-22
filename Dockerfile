@@ -6,10 +6,10 @@
 
 FROM ubuntu:16.04
 
-RUN groupadd -g 911 abc \
- && useradd -m -s /bin/bash -g 911 -u 911 abc
+RUN set -eux; \
+    groupadd -g 911 abc; \
+    useradd -m -s /bin/bash -g 911 -u 911 abc
 
-ADD ./src/docker-apt-install.sh /usr/local/sbin/docker-apt-install
-RUN chmod 500 /usr/local/sbin/docker-apt-install
+ADD docker-apt-install.sh /usr/local/sbin/docker-install
 
-RUN docker-apt-install apt-utils
+RUN docker-install apt-utils
