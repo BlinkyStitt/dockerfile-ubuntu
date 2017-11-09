@@ -1,10 +1,9 @@
 #
-# An Ubuntu Xenial Xerus container with helper scripts for installing packages
+# An Ubuntu container with helper scripts for installing packages
 #
-# todo: this is pretty much identical to bwstitt/library-debian
+# todo: this is pretty much identical to all the other base images
 #
-
-FROM ubuntu:16.04
+FROM ubuntu:17.10
 
 RUN set -eux; \
     groupadd -g 911 abc; \
@@ -12,4 +11,10 @@ RUN set -eux; \
 
 ADD docker-apt-install.sh /usr/local/sbin/docker-install
 
-RUN docker-install apt-utils
+# gnupg2+dirmngr are for 'apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FINGERPRINT'
+RUN docker-install \
+        apt-utils \
+        bash \
+        dirmngr \
+        gnupg2 \
+    ;

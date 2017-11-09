@@ -43,8 +43,10 @@ export DEBIAN_FRONTEND=noninteractive
 # stop apt from starting processes on install
 export RUNLEVEL=1
 
-echo "apt-key update:"
-apt-key update 2>&1
+if [ -n "$HTTP_PROXY" ]; then
+    echo "Configuring apt to use HTTP_PROXY..."
+    echo "Acquire::http::proxy \"$HTTP_PROXY\";" >/etc/apt/apt.conf.d/proxy
+fi
 
 echo
 echo "apt-get update:"
@@ -61,5 +63,9 @@ apt-install "$@"
 echo
 echo "Cleaning up..."
 rm -rf /var/lib/apt/lists/*
+
+if [ -e "/etc/apt/apt.conf.d/proxy" ]; then
+    rm /etc/apt/apt.conf.d/proxy
+fi
 
 # docker's official debian and ubuntu images do apt-get clean for us
